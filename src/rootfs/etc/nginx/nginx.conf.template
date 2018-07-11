@@ -1,14 +1,17 @@
+daemon off;
 events {
     multi_accept on;
 }
 pcre_jit on;
-pid /var/run/nginx.pid;
-user nginx;
+pid /run/nginx/nginx.pid;
+user "${USER}";
 worker_processes auto;
 
 include /etc/nginx/modules/*.conf;
 
 http {
+    access_log syslog:server=unix:/dev/log,facility=daemon;
+    error_log syslog:server=unix:/dev/log,facility=daemon;
     log_not_found off;
     reset_timedout_connection on;
     sendfile off;
@@ -19,5 +22,5 @@ http {
     include /etc/nginx/mime.types;
     default_type application/octet-stream;
 
-    include /etc/nginx/conf.d/*.conf;
+    include /run/nginx/etc/nginx/conf.d/*.conf;
 }

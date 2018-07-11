@@ -6,7 +6,6 @@ Small, powerful, scalable web/proxy server
 
 ```sh
 docker run \
-    --init \
     --interactive \
     --publish 80:80 \
     --rm \
