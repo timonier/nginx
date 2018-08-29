@@ -1,13 +1,6 @@
-#!/bin/bash
-set -e
+#!/bin/sh
+set -e -u
 
-mkdir -p /run/nginx
-mkdir -p /run/nginx/etc/nginx
-mkdir -p /run/nginx/etc/nginx/conf.d
-mkdir -p /var/cache/nginx
+mkdir -p /run/nginx /var/cache/nginx
 
-SHELL_FORMAT="$(printf '${%s} ' $(compgen -A variable))"
-
-cp /etc/nginx/conf.d/*.conf /run/nginx/etc/nginx/conf.d || :
-envsubst "${SHELL_FORMAT}" < /etc/nginx/nginx.conf.template > /run/nginx/etc/nginx/nginx.conf
-find /etc/nginx/conf.d -iname '*.template' -exec bash -c "envsubst '${SHELL_FORMAT}' < \${1} > /run/nginx\${1:0:-9}" _ {} \;
+find /etc/nginx -type f -print0 | xargs -0 -I {} -n1 -- sh -c "dockerize -template '{}:{}' || exit 255"

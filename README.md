@@ -5,12 +5,7 @@ Small, powerful, scalable web/proxy server
 ## Usage
 
 ```sh
-docker run \
-    --interactive \
-    --publish 80:80 \
-    --rm \
-    --tty \
-    timonier/nginx
+docker run --interactive --publish 80:80 --rm --tty timonier/nginx
 ```
 
 ## Contributing
@@ -28,4 +23,5 @@ If you like / use this project, please let me known by adding a [★](https://he
 ## Links
 
 * [image "timonier/nginx"](https://hub.docker.com/r/timonier/nginx/)
+* [jwilder/dockerize](https://github.com/jwilder/dockerize)
 * [nginx](https://nginx.org/)
