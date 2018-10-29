@@ -23,5 +23,7 @@ If you like / use this project, please let me known by adding a [★](https://he
 ## Links
 
 * [image "timonier/nginx"](https://hub.docker.com/r/timonier/nginx/)
+* [just-containers/s6-overlay](https://github.com/just-containers/s6-overlay)
 * [jwilder/dockerize](https://github.com/jwilder/dockerize)
 * [nginx](https://nginx.org/)
+* [timonier/dumb-entrypoint](https://github.com/timonier/dumb-entrypoint)
