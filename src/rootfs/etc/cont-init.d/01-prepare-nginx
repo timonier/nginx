@@ -1,5 +1,13 @@
 #!/bin/sh
-set -e -u
+set -e
+
+if [ -n "${NGINX_GID}" ]; then
+    groupmod --gid "${NGINX_GID}" --non-unique nginx
+fi
+
+if [ -n "${NGINX_UID}" ]; then
+    usermod --non-unique --uid "${NGINX_UID}" nginx
+fi
 
 mkdir -p /run/nginx /var/cache/nginx
 

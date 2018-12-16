@@ -6,14 +6,14 @@ LABEL \
 ENV \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     S6_KEEP_ENV=1 \
-    S6_READ_ONLY_ROOT=1 \
-    USER=nginx
+    S6_READ_ONLY_ROOT=1
 
 RUN set -e -u -x \
 \
     # Install packages
 \
     && apk add --no-cache --no-progress --virtual BUILD_DEPS curl \
+    && apk add --no-cache --no-progress shadow \
 \
     # Install dockerize
 \
@@ -33,5 +33,3 @@ RUN set -e -u -x \
 COPY rootfs/. /
 
 ENTRYPOINT [ "/init" ]
-
-VOLUME [ "/etc/nginx" ]
