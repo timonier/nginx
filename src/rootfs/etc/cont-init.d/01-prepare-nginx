@@ -11,4 +11,4 @@ fi
 
 mkdir -p /run/nginx /var/cache/nginx
 
-find /etc/nginx -type f -print0 | xargs -0 -I {} -n1 -- sh -c "dockerize -template '{}:{}' || exit 255"
+find /etc/nginx -type f -print0 | xargs -0 -I {} -n1 -- sh -c "dockerize -delims '⁅⁅:⁆⁆' -template '{}:{}' || exit 255"
