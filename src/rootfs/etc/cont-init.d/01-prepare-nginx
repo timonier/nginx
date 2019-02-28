@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 set -e
+shopt -s globstar
 
 if [ -n "${NGINX_GID}" ]; then
     groupmod --gid "${NGINX_GID}" --non-unique nginx
@@ -11,4 +12,7 @@ fi
 
 mkdir -p /run/nginx /var/cache/nginx
 
-find /etc/nginx -type f -print0 | xargs -0 -I {} -n1 -- sh -c "dockerize -delims '⁅⁅:⁆⁆' -template '{}:{}' || exit 255"
+for FILE in /etc/nginx/**/*; do
+    dockerize -delims '⁅⁅:⁆⁆' -template "${FILE}":"${FILE}"
+    dockerize -delims '\u2045\u2045:\u2046\u2046' -template "${FILE}":"${FILE}"
+done
