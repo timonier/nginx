@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 shopt -s globstar
 
 if [ -n "${NGINX_GID}" ]; then
@@ -12,7 +11,9 @@ fi
 
 mkdir -p /run/nginx /var/cache/nginx
 
-for FILE in /etc/nginx/**/*; do
+if [ -f /etc/nginx/nginx.conf ]; then
+    dockerize -delims '⁅⁅:⁆⁆' -template /etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+fi
+for FILE in /etc/nginx/conf.d/*; do
     dockerize -delims '⁅⁅:⁆⁆' -template "${FILE}":"${FILE}"
-    dockerize -delims '\u2045\u2045:\u2046\u2046' -template "${FILE}":"${FILE}"
 done

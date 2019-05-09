@@ -18,7 +18,7 @@ docker run --env NGINX_GID=1005 --env NGINX_UID=1005 --interactive --publish 80:
 
 It is possible to run a container in `read-only` mode if you mount the following folders:
 * `/etc` if you want to change `UID` or `GID` of user `nginx`.
-* `/run`, `/tmp` and `/var/cache/nginx`.
+* `/etc/nginx`, `/run`, `/tmp` and `/var/cache/nginx`.
 
 __Note__: `/run`, `/tmp` and `/var/cache/nginx` can be mount as `tmpfs`. In that case, `/run` must have flag `exec`.
 
