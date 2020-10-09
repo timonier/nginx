@@ -2,6 +2,8 @@
 
 Small, powerful, scalable web/proxy server
 
+If you like / use this project, please let me known by adding a ★ on the [GitHub repository](https://github.com/timonier/nginx).
+
 ## Usage
 
 ```sh
@@ -32,24 +34,10 @@ docker run --interactive --publish 80:80 --read-only --rm --tmpfs /run:exec --tm
 docker run --env NGINX_GID=1005 --env NGINX_UID=1005 --interactive --publish 80:80 --read-only --rm --tmpfs /run:exec --tmpfs /tmp --tmpfs /var/cache/nginx --tty --volume /etc timonier/nginx
 ```
 
-## Contributing
-
-1. Fork it.
-2. Create your branch: `git checkout -b my-new-feature`.
-3. Commit your changes: `git commit -am 'Add some feature'`.
-4. Push to the branch: `git push origin my-new-feature`.
-5. Submit a [merge request](https://docs.gitlab.com/ee/user/project/merge_requests/).
-
-__Note 1__: [GitHub repository](https://github.com/timonier/nginx) is a mirror. [Merge request](https://docs.gitlab.com/ee/user/project/merge_requests/) has to be submitted to the [GitLab repository](https://gitlab.com/timonier/aria2).
-
-__Note 2__: Use the script `bin/build-image` to test your modifications locally.
-
-If you like / use this project, please let me known by adding a [★](https://help.github.com/articles/about-stars/) on the [GitHub repository](https://github.com/timonier/nginx) or on the [GitLab repository](https://gitlab.com/timonier/nginx).
-
 ## Links
 
 * [image "timonier/nginx"](https://hub.docker.com/r/timonier/nginx/)
 * [just-containers/s6-overlay](https://github.com/just-containers/s6-overlay)
 * [jwilder/dockerize](https://github.com/jwilder/dockerize)
 * [nginx](https://nginx.org/)
-* [timonier/dumb-entrypoint](https://gitlab.com/timonier/dumb-entrypoint)
+* [timonier/nginx](https://github.com/timonier/nginx)
